@@ -1,41 +1,19 @@
 package ru.javamentor.springmvcboot.service;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.stereotype.Service;
-import ru.javamentor.springmvcboot.DAO.UserDAO;
 import ru.javamentor.springmvcboot.model.User;
 
 import java.util.List;
 
+public interface UserService {
 
-@Service
-public class UserService {
-    private UserDAO userDAO;
+    List<User> allUsers();
 
-    @Autowired
-    public void setUserDAO(UserDAO userDAO) {
-        this.userDAO = userDAO;
-    }
+    void save(User user);
 
+    void delete(User user);
 
-    public List<User> allUsers() {
-        return userDAO.allUsers();
-    }
+    User getById(Long id);
 
 
-    public void save(User user) {
-        userDAO.save(user);
-    }
 
-
-    public void delete(User user) {
-        userDAO.delete(user);
-    }
-
-
-    public User getById(Long id) {
-        return userDAO.getById(id);
-    }
 }
